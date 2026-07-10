@@ -1,6 +1,6 @@
 {
-  "name": "Cinema",
-  "short_name": "Cinema",
+  "name": "cinema",
+  "short_name": "cinema",
   "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#ffffff",
