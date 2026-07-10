@@ -1,0 +1,1045 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+<link rel="manifest" href="./manifest.json">
+<meta name="theme-color" content="#000000">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>CINEMA</title>
+
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,Segoe UI,sans-serif;
+}
+
+
+body{
+
+background:#0f172a;
+color:white;
+height:100vh;
+
+}
+
+
+
+/* TELA PRINCIPAL */
+
+#inicio{
+
+width:100%;
+height:100vh;
+padding:30px;
+background:linear-gradient(135deg,#111827,#1e293b);
+
+}
+
+
+.titulo{
+
+text-align:center;
+font-size:45px;
+margin-bottom:35px;
+
+}
+
+
+
+.containerSalas{
+
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:20px;
+
+}
+
+
+
+.sala{
+
+background:#2563eb;
+padding:30px;
+border-radius:15px;
+text-align:center;
+font-size:22px;
+cursor:pointer;
+transition:.3s;
+
+}
+
+
+.sala:hover{
+
+background:#1d4ed8;
+transform:scale(1.05);
+
+}
+
+
+
+/* JANELA DO CÓDIGO */
+
+
+#loginSala{
+
+display:none;
+
+position:fixed;
+
+top:0;
+left:0;
+
+width:100%;
+height:100%;
+
+background:rgba(0,0,0,.8);
+
+justify-content:center;
+align-items:center;
+
+}
+
+
+
+.caixa{
+
+background:#1e293b;
+
+width:350px;
+
+padding:30px;
+
+border-radius:20px;
+
+text-align:center;
+
+}
+
+
+
+.caixa h2{
+
+margin-bottom:20px;
+
+}
+
+
+
+input{
+
+width:100%;
+
+padding:15px;
+
+border:none;
+
+border-radius:10px;
+
+font-size:18px;
+
+margin-bottom:15px;
+
+}
+
+
+
+button{
+
+width:100%;
+
+padding:15px;
+
+border:none;
+
+border-radius:10px;
+
+background:#2563eb;
+
+color:white;
+
+font-size:18px;
+
+cursor:pointer;
+
+}
+
+
+
+button:hover{
+
+background:#1d4ed8;
+
+}
+
+
+#erro{
+
+color:#ff6b6b;
+
+margin-top:10px;
+
+}
+
+
+</style>
+
+
+</head>
+
+
+<body>
+
+
+
+<!-- TELA CINEMA -->
+
+
+<div id="inicio">
+
+
+<div class="titulo">
+
+🎬 CINEMA
+
+</div>
+
+
+
+<div class="containerSalas" id="salas">
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+<!-- PEDIDO DO CÓDIGO -->
+
+
+<div id="loginSala">
+
+
+<div class="caixa">
+
+
+<h2 id="nomeSala">
+
+SALA
+
+</h2>
+
+
+<input 
+type="password"
+id="codigoDigitado"
+placeholder="Digite o código">
+
+
+<button onclick="verificarCodigo()">
+
+ENTRAR
+
+</button>
+
+
+<p id="erro"></p>
+
+
+</div>
+
+
+</div>
+
+
+
+<script>
+
+
+let salaAtual="";
+
+
+
+// CRIAR AS 20 SALAS AUTOMATICAMENTE
+
+
+for(let i=1;i<=20;i++){
+
+
+let botao=document.createElement("div");
+
+
+botao.className="sala";
+
+
+botao.innerHTML="🎬 SALA "+i;
+
+
+
+botao.onclick=function(){
+
+abrirSala(i);
+
+};
+
+
+
+document.getElementById("salas")
+.appendChild(botao);
+
+
+}
+
+
+
+
+// ABRIR UMA SALA
+
+
+function abrirSala(numero){
+
+
+salaAtual="SALA "+numero;
+
+
+
+document.getElementById("nomeSala")
+.innerHTML="🎬 "+salaAtual;
+
+
+
+document.getElementById("loginSala")
+.style.display="flex";
+
+
+
+document.getElementById("codigoDigitado")
+.value="";
+
+
+document.getElementById("erro")
+.innerHTML="";
+
+
+}
+
+
+
+
+// A PRÓXIMA PARTE CONTINUA AQUI...
+
+// ===============================
+// CADASTRO DAS SALAS E CONTEÚDOS
+// ===============================
+
+
+// Aqui você coloca seus filmes e séries.
+// Basta trocar o nome e o link.
+
+
+const salas = {
+
+"SALA 1":{
+codigo:"A10",
+
+filmes:[
+{
+nome:"Mortal Kombat 2",
+url:"https://embed.bugoumods.com/player.php?type=vod_streams&id=17265094&ext=mp4&name=Mortal%20Kombat%202%20(2026)&img=https%3A%2F%2Fimage.tmdb.org%2Ft%2Fp%2Fw600_and_h900_bestv2%2FiILiJSRViTEcF23MHhGCbVm3mfW.jpg&uid=6a46d2d2a1bc0"
+}
+],
+
+series:[]
+
+},
+
+
+
+"SALA 2":{
+codigo:"B20",
+
+filmes:[
+/*
+{
+nome:"Nome do Filme",
+url:"LINK_DO_FILME"
+}
+*/
+],
+
+series:[]
+
+},
+
+
+
+"SALA 3":{
+codigo:"C30",
+
+filmes:[],
+
+series:[]
+
+},
+
+
+
+"SALA 4":{
+codigo:"D40",
+
+filmes:[],
+
+series:[]
+
+},
+
+
+
+"SALA 5":{
+codigo:"E50",
+
+filmes:[],
+
+series:[]
+
+},
+
+
+
+"SALA 6":{
+codigo:"F60",
+
+filmes:[],
+
+series:[]
+
+},
+
+
+
+"SALA 7":{
+codigo:"G70",
+
+filmes:[],
+
+series:[]
+
+},
+
+
+
+"SALA 8":{
+codigo:"H80",
+
+filmes:[],
+
+series:[]
+
+},
+
+
+
+"SALA 9":{
+codigo:"I90",
+
+filmes:[],
+
+series:[]
+
+},
+
+
+
+"SALA 10":{
+codigo:"J100",
+
+filmes:[],
+
+series:[]
+
+},
+
+
+
+"SALA 11":{
+codigo:"K110",
+
+filmes:[],
+
+series:[]
+
+},
+
+
+
+"SALA 12":{
+codigo:"L120",
+
+filmes:[],
+
+series:[]
+
+},
+
+
+
+"SALA 13":{
+codigo:"M130",
+
+filmes:[],
+
+series:[]
+
+},
+
+
+
+"SALA 14":{
+codigo:"N140",
+
+filmes:[],
+
+series:[]
+
+},
+
+
+
+"SALA 15":{
+codigo:"O150",
+
+filmes:[],
+
+series:[]
+
+},
+
+
+
+"SALA 16":{
+codigo:"P160",
+
+filmes:[],
+
+series:[]
+
+},
+
+
+
+"SALA 17":{
+codigo:"Q170",
+
+filmes:[],
+
+series:[]
+
+},
+
+
+
+"SALA 18":{
+codigo:"R180",
+
+filmes:[],
+
+series:[]
+
+},
+
+
+
+"SALA 19":{
+codigo:"S190",
+
+filmes:[],
+
+series:[]
+
+},
+
+
+
+"SALA 20":{
+codigo:"T200",
+
+filmes:[],
+
+series:[]
+
+}
+
+
+};
+
+
+
+
+
+// ===============================
+// CONFERIR O CÓDIGO DA SALA
+// ===============================
+
+
+function verificarCodigo(){
+
+
+let digitado =
+document.getElementById("codigoDigitado").value;
+
+
+
+let sala =
+salas[salaAtual];
+
+
+
+if(sala && digitado===sala.codigo){
+
+
+document.getElementById("loginSala")
+.style.display="none";
+
+
+
+document.getElementById("inicio")
+.style.display="none";
+
+
+
+abrirCinema();
+
+
+}
+
+
+else{
+
+
+document.getElementById("erro")
+.innerHTML="Código incorreto.";
+
+
+}
+
+
+
+}
+
+
+
+// ===============================
+// PREPARAÇÃO DO PLAYER
+// A PARTE 3 CONTINUA AQUI...
+// ===============================
+
+// ===============================
+// TELA INTERNA DO CINEMA
+// ===============================
+
+
+function abrirCinema(){
+
+
+document.body.innerHTML += `
+
+
+<div id="cinemaInterno" style="height:100vh;display:flex;background:#0f172a;">
+
+
+<div style="
+width:280px;
+background:#111827;
+padding:20px;
+overflow:auto;
+">
+
+
+<h2>🎬 CINEMA</h2>
+
+<h3 style="margin-top:20px;">
+${salaAtual}
+</h3>
+
+
+<div id="menuConteudo" style="margin-top:20px;"></div>
+
+
+</div>
+
+
+
+<div style="
+flex:1;
+padding:20px;
+">
+
+
+<iframe 
+id="player"
+src="about:blank"
+style="
+width:100%;
+height:100%;
+border:none;
+border-radius:15px;
+background:#000;
+"
+allowfullscreen>
+</iframe>
+
+
+</div>
+
+
+</div>
+
+
+`;
+
+
+carregarConteudo();
+
+
+}
+
+
+
+
+
+// ===============================
+// MOSTRAR FILMES E SÉRIES
+// ===============================
+
+
+function carregarConteudo(){
+
+
+let sala =
+salas[salaAtual];
+
+
+let menu =
+document.getElementById("menuConteudo");
+
+
+let html="";
+
+
+
+// FILMES
+
+
+if(sala.filmes.length>0){
+
+
+html += `
+
+<h3 style="margin-bottom:10px;">
+🍿 Filmes
+</h3>
+
+`;
+
+
+sala.filmes.forEach(function(filme){
+
+
+html += `
+
+
+<div 
+onclick="assistir('${filme.url}')"
+style="
+background:#1e293b;
+padding:15px;
+border-radius:10px;
+margin-bottom:10px;
+cursor:pointer;
+">
+
+
+🎬 ${filme.nome}
+
+
+</div>
+
+
+`;
+
+
+});
+
+
+}
+
+
+
+
+
+// SÉRIES
+
+
+if(sala.series.length>0){
+
+
+html += `
+
+<h3 style="margin-top:20px;">
+📺 Séries
+</h3>
+
+`;
+
+
+
+sala.series.forEach(function(serie,index){
+
+
+html += `
+
+
+<div
+onclick="mostrarEpisodios(${index})"
+style="
+background:#1e293b;
+padding:15px;
+border-radius:10px;
+margin-bottom:10px;
+cursor:pointer;
+">
+
+📺 ${serie.nome}
+
+</div>
+
+
+`;
+
+
+});
+
+
+}
+
+
+
+
+if(html===""){
+
+
+html=`
+
+<p style="margin-top:20px;">
+Nenhum conteúdo cadastrado nesta sala.
+</p>
+
+`;
+
+
+}
+
+
+
+menu.innerHTML=html;
+
+
+
+}
+
+
+
+
+// ===============================
+// EPISÓDIOS DAS SÉRIES
+// ===============================
+
+
+function mostrarEpisodios(indice){
+
+
+let sala =
+salas[salaAtual];
+
+
+let serie =
+sala.series[indice];
+
+
+let menu =
+document.getElementById("menuConteudo");
+
+
+
+let html=`
+
+
+<h3>
+${serie.nome}
+</h3>
+
+
+`;
+
+
+serie.episodios.forEach(function(ep){
+
+
+
+html += `
+
+
+<div
+onclick="assistir('${ep.url}')"
+style="
+background:#1e293b;
+padding:15px;
+border-radius:10px;
+margin-top:10px;
+cursor:pointer;
+">
+
+▶ ${ep.nome}
+
+</div>
+
+
+`;
+
+
+
+});
+
+
+
+menu.innerHTML=html;
+
+
+
+}
+
+
+
+
+
+// ===============================
+// ABRIR VÍDEO
+// ===============================
+
+
+function assistir(url){
+
+
+document.getElementById("player")
+.src=url;
+
+
+}
+
+
+</script>
+<style>
+#btnInstall {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 9999;
+
+  border: none;
+  border-radius: 50px;
+  padding: 14px 20px;
+
+  background: #000;
+  color: #fff;
+
+  font-size: 16px;
+  font-weight: bold;
+
+  box-shadow: 0 4px 12px rgba(0,0,0,.3);
+
+  cursor: pointer;
+
+  display: none;
+
+  transition: all .3s ease;
+}
+
+#btnInstall:hover {
+  transform: scale(1.05);
+}
+</style>
+
+<button id="btnInstall">📲 Instalar App</button>
+
+<script>
+let deferredPrompt;
+
+const btnInstall = document.getElementById("btnInstall");
+
+// Verifica se já está instalado
+function isAppInstalled() {
+  return window.matchMedia('(display-mode: standalone)').matches
+    || window.navigator.standalone === true;
+}
+
+// Se não estiver instalado
+if (!isAppInstalled()) {
+
+  window.addEventListener("beforeinstallprompt", (e) => {
+
+    e.preventDefault();
+
+    deferredPrompt = e;
+
+    btnInstall.style.display = "block";
+  });
+
+}
+
+// Clique no botão
+btnInstall.addEventListener("click", async () => {
+
+  if (!deferredPrompt) return;
+
+  deferredPrompt.prompt();
+
+  const { outcome } = await deferredPrompt.userChoice;
+
+  console.log("Resultado:", outcome);
+
+  deferredPrompt = null;
+
+  btnInstall.style.display = "none";
+});
+
+// Quando instalar
+window.addEventListener("appinstalled", () => {
+
+  console.log("PWA instalado");
+
+  btnInstall.style.display = "none";
+});
+
+// Registrar Service Worker
+if ("serviceWorker" in navigator) {
+
+  navigator.serviceWorker.register("./service-worker.js")
+    .then(() => console.log("SW registrado"))
+    .catch((err) => console.log("Erro SW:", err));
+
+}
+</script>
+
+</body>
+
+</html>
