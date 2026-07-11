@@ -211,6 +211,34 @@ margin-top:10px;
 🎬 CINEMA
 
 </div>
+<div style="text-align:center;margin-bottom:30px;">
+
+<input
+id="pesquisaFilme"
+type="text"
+placeholder="🔍 Procurar filme..."
+style="
+width:350px;
+max-width:90%;
+padding:15px;
+border-radius:10px;
+border:none;
+font-size:18px;
+">
+
+<button
+onclick="pesquisarFilme()"
+style="
+width:auto;
+padding:15px 20px;
+margin-left:10px;
+">
+🔍 Buscar
+</button>
+
+<p id="resultadoPesquisa" style="margin-top:20px;font-size:20px;"></p>
+
+</div>
 
 
 
@@ -1202,6 +1230,54 @@ if ("serviceWorker" in navigator) {
   navigator.serviceWorker.register("./service-worker.js")
     .then(() => console.log("SW registrado"))
     .catch((err) => console.log("Erro SW:", err));
+
+}
+function pesquisarFilme(){
+
+let texto =
+document.getElementById("pesquisaFilme")
+.value
+.toLowerCase()
+.trim();
+
+let resultado =
+document.getElementById("resultadoPesquisa");
+
+if(texto==""){
+
+resultado.innerHTML="Digite o nome do filme.";
+
+return;
+
+}
+
+let encontrados=[];
+
+for(let sala in salas){
+
+salas[sala].filmes.forEach(function(filme){
+
+if(filme.nome.toLowerCase().includes(texto)){
+
+encontrados.push(
+"🎬 <b>"+filme.nome+"</b> está na <b>"+sala+"</b>"
+);
+
+}
+
+});
+
+}
+
+if(encontrados.length==0){
+
+resultado.innerHTML="❌ Filme não encontrado.";
+
+}else{
+
+resultado.innerHTML=encontrados.join("<br><br>");
+
+}
 
 }
 </script>
