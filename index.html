@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -267,7 +268,7 @@ ENTRAR
 
 
 let salaAtual="";
-
+let filmeSelecionado = null;
 
 
 // CRIAR AS 20 SALAS AUTOMATICAMENTE
@@ -308,28 +309,9 @@ document.getElementById("salas")
 
 function abrirSala(numero){
 
+    salaAtual = "SALA " + numero;
 
-salaAtual="SALA "+numero;
-
-
-
-document.getElementById("nomeSala")
-.innerHTML="🎬 "+salaAtual;
-
-
-
-document.getElementById("loginSala")
-.style.display="flex";
-
-
-
-document.getElementById("codigoDigitado")
-.value="";
-
-
-document.getElementById("erro")
-.innerHTML="";
-
+    mostrarCartaz();
 
 }
 
@@ -355,7 +337,17 @@ codigo:"A10",
 filmes:[
 {
 nome:"Mortal Kombat 2",
+
+imagem:"https://image.tmdb.org/t/p/w600_and_h900_bestv2/iILiJSRViTEcF23MHhGCbVm3mfW.jpg",
+
 url:"https://embed.bugoumods.com/player.php?type=vod_streams&id=17265094&ext=mp4&name=Mortal%20Kombat%202%20(2026)&img=https%3A%2F%2Fimage.tmdb.org%2Ft%2Fp%2Fw600_and_h900_bestv2%2FiILiJSRViTEcF23MHhGCbVm3mfW.jpg&uid=6a46d2d2a1bc0"
+},
+{
+nome:"Tetra",
+
+imagem:"https://br.web.img2.acsta.net/c_310_420/img/6a/2c/6a2c1c446a06d2dc497d410fc09ec2eb.png",
+
+url:"https://embed.bugoumods.com/player.php?type=vod_streams&id=17265096&ext=mp4&name=Tetra%3A%20Acreditar%20de%20Novo%20(2026)&img=https%3A%2F%2Fimage.tmdb.org%2Ft%2Fp%2Fw600_and_h900_bestv2%2F7vW1BD3416Ev2rdB7CHKXGnzdGv.jpg&uid=6a46d2d2a1bc0"
 }
 ],
 
@@ -369,12 +361,20 @@ series:[]
 codigo:"B20",
 
 filmes:[
-/*
 {
-nome:"Nome do Filme",
-url:"LINK_DO_FILME"
+nome:"Michael",
+
+imagem:"https://tse1.mm.bing.net/th/id/OIP.dfrfDIHYfRlpWpaof39_wwAAAA?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+
+url:"https://embed.bugoumods.com/player.php?type=vod_streams&id=17265093&ext=mp4&name=Michael%20(2026)&img=https%3A%2F%2Fimage.tmdb.org%2Ft%2Fp%2Fw600_and_h900_bestv2%2FdueFqKLvjftnELZaGYwY7xinfaI.jpg&uid=6a46d2d2a1bc0"
+},
+{
+nome:"Consequência",
+
+imagem:"https://leiturafilmica.com.br/wp-content/uploads/2026/03/consequencia-poster.jpg",
+
+url:"https://embed.bugoumods.com/player.php?type=vod_streams&id=17266619&ext=mp4&name=Consequ%C3%AAncia%20(2026)&img=https%3A%2F%2Fimage.tmdb.org%2Ft%2Fp%2Fw600_and_h900_bestv2%2FdTQZwcItQNEeSjpk3BYKYg27v9t.jpg&uid=6a46d2d2a1bc0"
 }
-*/
 ],
 
 series:[]
@@ -386,7 +386,22 @@ series:[]
 "SALA 3":{
 codigo:"C30",
 
-filmes:[],
+filmes:[
+{
+nome:"Cara de um Focinho de outro",
+
+imagem:"https://tse3.mm.bing.net/th/id/OIP.yX2L8CAbiGv6TePcFiJhSwAAAA?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+
+url:"https://embed.bugoumods.com/player.php?type=vod_streams&id=17265117&ext=mp4&name=Cara%20de%20Um%2C%20Focinho%20de%20Outro%20(2026)&img=https%3A%2F%2Fimage.tmdb.org%2Ft%2Fp%2Fw600_and_h900_bestv2%2FftPFJBGbldoWiiPrmesW96zBzdH.jpg&uid=6a46d2d2a1bc0"
+},
+{
+nome:"Super Mário",
+
+imagem:"https://tse3.mm.bing.net/th/id/OIP.4upkRQF6i2oUlLpU1Zk5iAHaLu?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+
+url:"https://embed.bugoumods.com/player.php?type=vod_streams&id=17265133&ext=mp4&name=Super%20Mario%20Galaxy%3A%20O%20Filme%20(2026)&img=https%3A%2F%2Fimage.tmdb.org%2Ft%2Fp%2Fw600_and_h900_bestv2%2Fb3WeTp42eJSRuE4UZfyPCOJW4c.jpg&uid=6a46d2d2a1bc0"
+}
+],
 
 series:[]
 
@@ -397,8 +412,22 @@ series:[]
 "SALA 4":{
 codigo:"D40",
 
-filmes:[],
+filmes:[
+{
+nome:"As ovelhas Detetives",
 
+imagem:"https://tse4.mm.bing.net/th/id/OIP.O_Y21nToM8Xrvf52xQyAtQAAAA?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+
+url:"https://embed.bugoumods.com/player.php?type=vod_streams&id=17407220&ext=mp4&name=As%20Ovelhas%20Detetives%20(2026)&img=https%3A%2F%2Fimage.tmdb.org%2Ft%2Fp%2Fw600_and_h900_bestv2%2FcrW4rarCRUVRSRFy3Bufw8Mwf8l.jpg&uid=6a46d2d2a1bc0"
+},
+{
+nome:"Pinóquio",
+
+imagem:"https://tse1.mm.bing.net/th/id/OIP.8XToUIG_VFQL3_iMJSwWdwAAAA?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+
+url:"https://embed.bugoumods.com/player.php?type=vod_streams&id=17265136&ext=mp4&name=PINOQUIO%20(2026)&img=https%3A%2F%2Fimage.tmdb.org%2Ft%2Fp%2Foriginal%2FhZ6N6lvCbXsRYfy13nZ26AeZIz0.jpg&uid=6a46d2d2a1bc0"
+}
+],
 series:[]
 
 },
@@ -584,7 +613,135 @@ series:[]
 
 
 
+function mostrarCartaz(){
 
+    let sala = salas[salaAtual];
+
+    if(sala.filmes.length==0){
+
+        alert("Nenhum filme cadastrado.");
+
+        return;
+
+    }
+
+    let html = `
+    <div style="
+    background:#0f172a;
+    color:white;
+    min-height:100vh;
+    padding:30px;
+    ">
+
+        <h1 style="
+        text-align:center;
+        margin-bottom:40px;
+        ">
+        🎬 ${salaAtual}
+        </h1>
+
+        <div style="
+        display:grid;
+        grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
+        gap:30px;
+        ">
+    `;
+
+    sala.filmes.forEach(function(filme,indice){
+
+        html += `
+
+        <div style="
+        background:#1e293b;
+        border-radius:15px;
+        padding:15px;
+        text-align:center;
+        ">
+
+            <img
+            src="${filme.imagem}"
+            style="
+            width:100%;
+            border-radius:10px;
+            margin-bottom:15px;
+            ">
+
+            <h3>${filme.nome}</h3>
+
+            <button
+            style="
+            margin-top:15px;
+            width:100%;
+            "
+            onclick="selecionarFilme(${indice})">
+
+            ▶ ASSISTIR
+
+            </button>
+
+        </div>
+
+        `;
+
+    });
+
+    html += `
+        </div>
+    </div>
+    `;
+
+    document.body.innerHTML = html;
+
+}
+function selecionarFilme(indice){
+
+    filmeSelecionado = indice;
+
+    pedirSenha();
+
+}
+function pedirSenha(){
+
+    document.body.innerHTML += `
+
+    <div
+    id="loginSala"
+    style="
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,.8);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    ">
+
+        <div class="caixa">
+
+            <h2>${salaAtual}</h2>
+
+            <input
+            type="password"
+            id="codigoDigitado"
+            placeholder="Digite o código">
+
+            <button onclick="verificarCodigo()">
+
+            ENTRAR
+
+            </button>
+
+            <p id="erro"></p>
+
+        </div>
+
+    </div>
+
+    `;
+
+}
 
 // ===============================
 // CONFERIR O CÓDIGO DA SALA
@@ -593,46 +750,21 @@ series:[]
 
 function verificarCodigo(){
 
+    let digitado =
+    document.getElementById("codigoDigitado").value;
 
-let digitado =
-document.getElementById("codigoDigitado").value;
+    let sala =
+    salas[salaAtual];
 
+    if(sala && digitado===sala.codigo){
 
+        abrirCinema();
 
-let sala =
-salas[salaAtual];
+    }else{
 
+        document.getElementById("erro").innerHTML="Código incorreto.";
 
-
-if(sala && digitado===sala.codigo){
-
-
-document.getElementById("loginSala")
-.style.display="none";
-
-
-
-document.getElementById("inicio")
-.style.display="none";
-
-
-
-abrirCinema();
-
-
-}
-
-
-else{
-
-
-document.getElementById("erro")
-.innerHTML="Código incorreto.";
-
-
-}
-
-
+    }
 
 }
 
@@ -651,7 +783,7 @@ document.getElementById("erro")
 function abrirCinema(){
 
 
-document.body.innerHTML += `
+document.body.innerHTML = `
 
 
 <div id="cinemaInterno" style="height:100vh;display:flex;background:#0f172a;">
@@ -708,7 +840,7 @@ allowfullscreen>
 `;
 
 
-carregarConteudo();
+carregarConteudo(filmeSelecionado);
 
 
 }
@@ -722,7 +854,7 @@ carregarConteudo();
 // ===============================
 
 
-function carregarConteudo(){
+function carregarConteudo(indice){
 
 
 let sala =
@@ -734,7 +866,11 @@ document.getElementById("menuConteudo");
 
 
 let html="";
+if(indice!=null){
 
+    assistir(sala.filmes[indice].url);
+
+}
 
 
 // FILMES
