@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -263,13 +264,15 @@ ENTRAR
 </div>
 
 
-
 <script>
 
 
 let salaAtual="";
 let filmeSelecionado = null;
 
+function voltarInicio(){
+    location.reload();
+}
 
 // CRIAR AS 20 SALAS AUTOMATICAMENTE
 
@@ -639,6 +642,20 @@ function mostrarCartaz(){
         ">
         🎬 ${salaAtual}
         </h1>
+        
+        <button
+onclick="voltarInicio()"
+style="
+background:#ef4444;
+color:white;
+padding:12px 20px;
+border:none;
+border-radius:10px;
+margin-bottom:20px;
+cursor:pointer;
+">
+⬅ Voltar
+</button>
 
         <div style="
         display:grid;
@@ -797,12 +814,25 @@ overflow:auto;
 ">
 
 
-<h2>🎬 CINEMA</h2>
-
 <h3 style="margin-top:20px;">
 ${salaAtual}
 </h3>
 
+<button
+onclick="voltarInicio()"
+style="
+width:100%;
+margin-top:15px;
+margin-bottom:20px;
+background:#ef4444;
+color:white;
+padding:12px;
+border:none;
+border-radius:10px;
+cursor:pointer;
+">
+⬅ Voltar
+</button>
 
 <div id="menuConteudo" style="margin-top:20px;"></div>
 
