@@ -189,6 +189,45 @@ margin-top:10px;
 
 }
 
+#btnCompartilhar{
+
+position:fixed;
+
+bottom:90px;
+
+right:20px;
+
+width:60px;
+
+height:60px;
+
+border:none;
+
+border-radius:50%;
+
+background:#2563eb;
+
+color:#fff;
+
+font-size:28px;
+
+cursor:pointer;
+
+box-shadow:0 4px 12px rgba(0,0,0,.4);
+
+z-index:9999;
+
+transition:.3s;
+
+}
+
+#btnCompartilhar:hover{
+
+transform:scale(1.1);
+
+background:#1d4ed8;
+
+}
 
 </style>
 
@@ -209,6 +248,10 @@ margin-top:10px;
 <div class="titulo">
 
 🎬 CINEMA
+
+<button id="btnCompartilhar">
+📤
+</button>
 
 </div>
 <div style="text-align:center;margin-bottom:30px;">
@@ -1280,6 +1323,37 @@ resultado.innerHTML=encontrados.join("<br><br>");
 }
 
 }
+const btnCompartilhar = document.getElementById("btnCompartilhar");
+
+btnCompartilhar.addEventListener("click", async ()=>{
+
+const url = "https://leitor266-tech.github.io/leitor";
+
+if(navigator.share){
+
+try{
+
+await navigator.share({
+
+title:"🎬 CINEMA",
+
+text:"Venha assistir filmes e séries!",
+
+url:url
+
+});
+
+}catch(e){}
+
+}else{
+
+navigator.clipboard.writeText(url);
+
+alert("Link copiado!\n\n"+url);
+
+}
+
+});
 </script>
 
 </body>
